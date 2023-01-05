@@ -80,7 +80,6 @@ def handleRequest(update, context):
                 chat_id=update.effective_chat.id, user_id=update.effective_user.id)
 
 def main():
-
     # Pass your bot token to the updater
     updater = Updater(bot_token, use_context=True)
     # on command '/start' or '/help' call menu()

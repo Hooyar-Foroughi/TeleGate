@@ -31,7 +31,6 @@ contract paywall {
         string calldata _link, 
         uint256 _price
         ) public {
-
         // check if chat tag is available
         require(group[chatID[_chatTag]].active == false, "* Chat tag unavailable *");
         // map chat tag to corresponding chat ID
@@ -45,11 +44,11 @@ contract paywall {
             newGroup.groupOwner = msg.sender;
     }
 
+    // subscribe user to group
     function subscribe(
         string calldata _chatTag, 
         string calldata _userID
         ) payable public {
-
         // check if chat tag is valid
         require(group[chatID[_chatTag]].active == true, "* Invalid chat tag *");
         // check if amount is correct

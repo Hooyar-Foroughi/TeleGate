@@ -3,6 +3,7 @@ import tkinter.messagebox
 import customtkinter
 import contractWrapper as contract
 
+# setting interface appearance and theme
 customtkinter.set_appearance_mode("System")
 customtkinter.set_default_color_theme("blue")
 
@@ -14,10 +15,12 @@ class App(customtkinter.CTk):
         self.title("TeleGate")
         self.geometry(f"{1100}x{680}")
         self.resizable(width=False, height=False)
+
         # configure grid layout
         self.grid_columnconfigure(1, weight=1)
         self.grid_rowconfigure((0, 1, 2, 3, 4, 5), weight=1)
-        # create sidebar frame with widgets
+
+        # create sidebar frame with navigation widgets
         self.telegate = customtkinter.CTkLabel(self, text="TeleGate", font=customtkinter.CTkFont(size=30, weight="bold"))
         self.telegate.grid(row=0, column=0, padx=20, pady=(20, 20))
         self.subscribe = customtkinter.CTkButton(self, height=70, text="Subscribe", 
@@ -32,17 +35,19 @@ class App(customtkinter.CTk):
         self.groupLookup = customtkinter.CTkButton(self, height=70, text="Group Lookup", 
             font=customtkinter.CTkFont(size=20), command=self.lookupTab)
         self.groupLookup.grid(row=4, column=0, padx=20, pady=10, sticky=customtkinter.N)
-        # Frame for subscribe tab
+
+        # frame for subscribe tab
         self.subscribeFrame = customtkinter.CTkFrame(self, width=880, corner_radius=0)
         self.subscribeFrame.grid(row=0, column=1, rowspan=6, sticky="nsew")
-        # Subscribe tab
+
+        # subscribe tab layout
         self.subTitle = customtkinter.CTkLabel(self.subscribeFrame, text="Subscribe to a group", font=customtkinter.CTkFont(size=30))
         self.subTitle.grid(row=0, column=1, padx=(90,0), pady=(40, 0), sticky=customtkinter.NW)
         self.subInfo = customtkinter.CTkLabel(self.subscribeFrame, 
             text="Wallet Address - Wallet address to complete transaction with\n\n"\
                  "Wallet Key - Private key corresponding to wallet address\n\n"\
                  "Chat Tag - Chat tag of group to subscribe to\n\n"\
-                 "User ID - User ID of member to be added to group", 
+                 "User ID - User ID of member to be added to group (retrieved from @TeleGateBot)", 
             justify=customtkinter.LEFT, font=customtkinter.CTkFont(size=18))
         self.subInfo.grid(row=1, column=1, padx=(90,0), pady=(50, 50), sticky=customtkinter.SW)
         self.walletEntry = customtkinter.CTkEntry(self.subscribeFrame, height=40, width=350, placeholder_text="Wallet Address")
@@ -57,18 +62,20 @@ class App(customtkinter.CTk):
             fg_color="transparent", border_width=2, text_color=("gray10", "#DCE4EE"), 
             font=customtkinter.CTkFont(size=18), command=self.callSubscribe)
         self.subscribeButton.grid(row=4, column=1, padx=(90, 20), pady=(55, 10), sticky=customtkinter.NW)
-        # Frame for group setup tab
+
+        # frame for group setup tab
         self.setupFrame = customtkinter.CTkFrame(self, width=880, corner_radius=0)
-        # Group setup tab
+
+        # group setup tab layout
         self.setupTitle = customtkinter.CTkLabel(self.setupFrame, text="Setup TeleGate for a Telegram group", font=customtkinter.CTkFont(size=30))
         self.setupTitle.grid(row=0, column=1, padx=(90,0), pady=(40, 0), sticky=customtkinter.NW)
         self.setupInfo = customtkinter.CTkLabel(self.setupFrame, 
             text="Wallet Address - Wallet address to complete transaction with\n\n"\
                  "Wallet Key - Private key corresponding to wallet address\n\n"\
-                 "Chat Tag - Chat tag of group to subscribe to\n\n"\
-                 "Chat ID - \n\n"\
-                 "Link - \n\n"\
-                 "Price - ", 
+                 "Chat Tag - A custom chat tag for your group\n\n"\
+                 "Chat ID -  Chat ID of your group (retrieved from @TeleGateBot)\n\n"\
+                 "Link - Telegram invite link for your group\n\n"\
+                 "Price - Group entry price (BNB)", 
             justify=customtkinter.LEFT, font=customtkinter.CTkFont(size=18))
         self.setupInfo.grid(row=1, column=1, padx=(90,0), pady=(30, 30), sticky=customtkinter.SW)
         self.walletEntry = customtkinter.CTkEntry(self.setupFrame, height=40, width=350, placeholder_text="Wallet Address")
@@ -87,9 +94,11 @@ class App(customtkinter.CTk):
             fg_color="transparent", border_width=2, text_color=("gray10", "#DCE4EE"), 
             font=customtkinter.CTkFont(size=18), command=self.callInitialize)
         self.setupButton.grid(row=5, column=1, padx=(90, 20), pady=(25, 10), sticky=customtkinter.NW)
-        # Frame for group settings tab
+
+        # frame for group settings tab
         self.settingsFrame = customtkinter.CTkFrame(self, width=880, corner_radius=0)
-        # Group settings tab
+
+        # group settings tab layout
         self.settingsTitle = customtkinter.CTkLabel(self.settingsFrame, text="Manage your TeleGate group", 
             font=customtkinter.CTkFont(size=30))
         self.settingsTitle.grid(row=0, column=1, padx=(90,0), pady=40, sticky=customtkinter.NW)
@@ -117,9 +126,11 @@ class App(customtkinter.CTk):
             fg_color="transparent", border_width=2, text_color=("gray10", "#DCE4EE"), 
             font=customtkinter.CTkFont(size=18), command=self.callChangePrice)
         self.changePriceButton.grid(row=5, column=1, padx=(10, 0), pady=(10, 25), sticky=customtkinter.NE)
-        # Frame for group lookup tab
+
+        # frame for group lookup tab
         self.lookupFrame = customtkinter.CTkFrame(self, width=880, corner_radius=0)
-        # Group lookup tab
+
+        # group lookup tab layout
         self.lookupTitle = customtkinter.CTkLabel(self.lookupFrame, text="TeleGate Group Lookup", 
             font=customtkinter.CTkFont(size=30))
         self.lookupTitle.grid(row=0, column=1, padx=(90,0), pady=(40, 20), sticky=customtkinter.NW)
@@ -163,46 +174,48 @@ class App(customtkinter.CTk):
         self.getStatusButton.grid(row=4, column=1, padx=(660, 0), pady=(70, 10), sticky=customtkinter.E)
         self.result = customtkinter.CTkLabel(self.lookupFrame, text="", height=50, corner_radius=10,
             font=customtkinter.CTkFont(size=26), fg_color="grey20")
-        
-    def open_input_dialog_event(self):
-        dialog = customtkinter.CTkInputDialog(text="Type in a number:", title="CTkInputDialog")
-        print("CTkInputDialog:", dialog.get_input())
-
+    
+    # closes existing tabs and activates the subscribe tab
     def subscribeTab(self):
         self.lookupFrame.grid_forget()
         self.setupFrame.grid_forget()
         self.settingsFrame.grid_forget()
         self.subscribeFrame.grid(row=0, column=1, rowspan=6, sticky="nsew")
 
+    # closes existing tabs and activates the group setup tab
     def setupTab(self):
         self.lookupFrame.grid_forget()
         self.subscribeFrame.grid_forget()
         self.settingsFrame.grid_forget()
         self.setupFrame.grid(row=0, column=1, rowspan=6, sticky="nsew")
 
+    # closes existing tabs and activates the group settings tab
     def settingsTab(self):
         self.lookupFrame.grid_forget()
         self.subscribeFrame.grid_forget()
         self.setupFrame.grid_forget()
         self.settingsFrame.grid(row=0, column=1, rowspan=6, sticky="nsew")
 
+    # closes existing tabs and activates the group lookup tab
     def lookupTab(self):
         self.subscribeFrame.grid_forget()
         self.setupFrame.grid_forget()
         self.settingsFrame.grid_forget()
         self.lookupFrame.grid(row=0, column=1, rowspan=6, sticky="nsew")
-  
+    
+    # retrieve and use entry inputs to call subscribe() from smart contract wrapper
     def callSubscribe(self):
         wallet = self.walletEntry.get() 
         key = self.keyEntry.get()
         chatTag = self.chatTag.get()
         userID = self.userID.get()
-        
+        # announce transaction status
         if(contract.subscribe(wallet, key, chatTag, userID) == 1):
             self.subscribeButton.configure(text="Failed", fg_color="red")
         else:
             self.subscribeButton.configure(text="Subscribed!", fg_color="green")
 
+    # retrieve and use entry inputs to call initializeGroup() from smart contract wrapper
     def callInitialize(self):
         wallet = self.walletEntry.get() 
         key = self.keyEntry.get()
@@ -210,46 +223,52 @@ class App(customtkinter.CTk):
         chatID = self.chatID.get()
         link = self.link.get()
         price = self.price.get()
-        
+        # announce transaction status
         if(contract.initializeGroup(wallet, key, chatTag, chatID, link, price) == 1):
             self.setupButton.configure(text="Failed", fg_color="red")
         else:
             self.setupButton.configure(text="Success!", fg_color="green")
 
+    # retrieve and use entry inputs to call changeLink() from smart contract wrapper
     def callChangeLink(self):
         wallet = self.walletEntry.get() 
         key = self.keyEntry.get()
         chatTag = self.chatTag.get()
         link = self.link.get()
-
+        # announce transaction status
         if(contract.changeLink(wallet, key, chatTag, link) == 1):
             self.changeLinkButton.configure(text="Failed", fg_color="red")
         else:
             self.changeLinkButton.configure(text="Success!", fg_color="green")
 
+    # retrieve and use entry inputs to call changePrice() from smart contract wrapper
     def callChangePrice(self):
         wallet = self.walletEntry.get() 
         key = self.keyEntry.get()
         chatTag = self.chatTag.get()
         price = self.price.get()
-
+        # announce transaction status
         if(contract.changePrice(wallet, key, chatTag, price) == 1):
             self.changePriceButton.configure(text="Failed", fg_color="red")
         else:
             self.changePriceButton.configure(text="Success!", fg_color="green")
 
+    # retrieve and use entry inputs to call getLink() from smart contract wrapper
     def callGetLink(self):
         chatTag = self.chatTag.get()
         self.result.configure(text=contract.getLink(chatTag), fg_color="grey20")
         self.result.grid(row=5, column=1, sticky="nsew", padx=(90, 0), pady=(25, 0))
 
+    # retrieve and use entry inputs to call getPrice() from smart contract wrapper
     def callGetPrice(self):
         chatTag = self.chatTag1.get()
-        self.result.configure(text=contract.getPrice(chatTag), fg_color="grey20")
+        self.result.configure(text=str(contract.getPrice(chatTag))+" BNB", fg_color="grey20")
         self.result.grid(row=5, column=1, sticky="nsew", padx=(90, 0), pady=(25, 0))
 
+    # retrieve and use entry inputs to call isChatTagActive() from smart contract wrapper
     def callCheckChatTag(self):
         chatTag = self.chatTag2.get()
+        # announce tag availability
         if(contract.isChatTagActive(chatTag)):
             self.result.configure(text="Unavailable", fg_color="red")
         else:
@@ -257,9 +276,11 @@ class App(customtkinter.CTk):
 
         self.result.grid(row=5, column=1, sticky="nsew", padx=(90, 0), pady=(25, 0))
 
+    # retrieve and use entry inputs to call getSubStatus() from smart contract wrapper
     def callSubStatus(self):
         chatTag = self.chatTag3.get()
         userID = self.userID.get()
+        # announce user subscription status
         if(contract.getSubStatus(chatTag, userID)):
             self.result.configure(text="Subscribed", fg_color="green")
         else:
