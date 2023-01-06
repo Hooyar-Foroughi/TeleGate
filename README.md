@@ -8,13 +8,13 @@ Telegate is an automated paywall system for Telegram groups which operates indep
 
 > <img src="https://github.com/Hooyar-Foroughi/TeleGate/blob/main/screenshots/TeleGate%20Bot.png?raw=true" alt="@TeleGateBot" width="200"/>
 
-> <img src="https://github.com/Hooyar-Foroughi/TeleGate/blob/main/screenshots/TeleGate%20Bot%20Demo.png?raw=true" alt="Bot demo" width="400"/>
+> <img src="https://github.com/Hooyar-Foroughi/TeleGate/blob/main/screenshots/TeleGate%20Bot%20Demo.png?raw=true" alt="Bot demo" width="800"/>
 
-> <img src="https://github.com/Hooyar-Foroughi/TeleGate/blob/main/screenshots/Subscribe%20tab.png?raw=true" alt="Subscribe tab" width="400"/>
+> <img src="https://github.com/Hooyar-Foroughi/TeleGate/blob/main/screenshots/Subscribe%20tab.png?raw=true" alt="Subscribe tab" width="800"/>
 
-> <img src="https://github.com/Hooyar-Foroughi/TeleGate/blob/main/screenshots/Setup%20tab.png?raw=true" alt="Group set tab" width="400"/>
+> <img src="https://github.com/Hooyar-Foroughi/TeleGate/blob/main/screenshots/Setup%20tab.png?raw=true" alt="Group set tab" width="800"/>
 
-> <img src="https://github.com/Hooyar-Foroughi/TeleGate/blob/main/screenshots/Settings%20tab.png?raw=true" alt="Group settings tab" width="400"/>
+> <img src="https://github.com/Hooyar-Foroughi/TeleGate/blob/main/screenshots/Settings%20tab.png?raw=true" alt="Group settings tab" width="800"/>
 
-> <img src="https://github.com/Hooyar-Foroughi/TeleGate/blob/main/screenshots/Group%20lookup%20tab.png?raw=true" alt="Group lookup tab" width="400"/>
+> <img src="https://github.com/Hooyar-Foroughi/TeleGate/blob/main/screenshots/Group%20lookup%20tab.png?raw=true" alt="Group lookup tab" width="800"/>
 
