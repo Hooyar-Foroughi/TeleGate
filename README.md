@@ -18,3 +18,4 @@ Telegate is an automated paywall system for Telegram groups which operates indep
 
 > <img src="https://github.com/Hooyar-Foroughi/TeleGate/blob/main/screenshots/Group%20lookup%20tab.png?raw=true" alt="Group lookup tab" width="800"/>
 
+January 2023
