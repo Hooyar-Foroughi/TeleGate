@@ -6,8 +6,6 @@ Telegate is an automated paywall system for Telegram groups which operates indep
 
 ---
 
-> <img src="https://github.com/Hooyar-Foroughi/TeleGate/blob/main/screenshots/TeleGate%20Bot.png?raw=true" alt="@TeleGateBot" width="200"/>
-
 > <img src="https://github.com/Hooyar-Foroughi/TeleGate/blob/main/screenshots/TeleGate%20Bot%20Demo.png?raw=true" alt="Bot demo" width="800"/>
 
 > <img src="https://github.com/Hooyar-Foroughi/TeleGate/blob/main/screenshots/Subscribe%20tab.png?raw=true" alt="Subscribe tab" width="800"/>
