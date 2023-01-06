@@ -80,20 +80,20 @@ def changePrice(wallet, key, chatTag, newPrice):
 
 # call initializeGroup() from smart contract
 def initializeGroup(wallet, key, chatTag, chatID, link, price):
-    #try:
-    wallet = web3.toChecksumAddress(wallet)
-    nonce = web3.eth.get_transaction_count(wallet)
-    txn = contract.functions.initializeGroup(chatTag, chatID, link, web3.toWei(price ,'ether')).buildTransaction({
-    'from': wallet,
-    'gas': 200000,
-    'gasPrice': web3.eth.gas_price,
-    'nonce': nonce,
-    })
+    try:
+        wallet = web3.toChecksumAddress(wallet)
+        nonce = web3.eth.get_transaction_count(wallet)
+        txn = contract.functions.initializeGroup(chatTag, chatID, link, web3.toWei(price ,'ether')).buildTransaction({
+        'from': wallet,
+        'gas': 200000,
+        'gasPrice': web3.eth.gas_price,
+        'nonce': nonce,
+        })
 
-    signed_txn = web3.eth.account.sign_transaction(txn, private_key=key)
-    txn_hash = web3.eth.send_raw_transaction(signed_txn.rawTransaction)
-    receipt = web3.eth.wait_for_transaction_receipt(txn_hash)
-    '''
+        signed_txn = web3.eth.account.sign_transaction(txn, private_key=key)
+        txn_hash = web3.eth.send_raw_transaction(signed_txn.rawTransaction)
+        receipt = web3.eth.wait_for_transaction_receipt(txn_hash)
+
         if (receipt['status'] == 1):
             return web3.toHex(txn_hash)
         else:
@@ -101,7 +101,7 @@ def initializeGroup(wallet, key, chatTag, chatID, link, price):
 
     except:
         return 1
-    '''
+
 
 # call subscribe() from smart contract
 def subscribe(wallet, key, chatTag, userID):
