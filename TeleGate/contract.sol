@@ -2,7 +2,7 @@
 
 pragma solidity 0.8.17;
 
-contract paywall {
+contract TeleGate {
 
     // group data
     struct Group {

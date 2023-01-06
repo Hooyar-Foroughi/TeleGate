@@ -50,20 +50,20 @@ class App(customtkinter.CTk):
                  "User ID - User ID of member to be added to group (retrieved from @TeleGateBot)", 
             justify=customtkinter.LEFT, font=customtkinter.CTkFont(size=18))
         self.subInfo.grid(row=1, column=1, padx=(90,0), pady=(50, 50), sticky=customtkinter.SW)
-        self.walletEntry = customtkinter.CTkEntry(self.subscribeFrame, height=40, width=350, placeholder_text="Wallet Address")
-        self.walletEntry.grid(row=2, column=1, columnspan=1, padx=(90,0), pady=10, sticky=customtkinter.NW)
-        self.keyEntry = customtkinter.CTkEntry(self.subscribeFrame, height=40, width=350, placeholder_text="Wallet Key")
-        self.keyEntry.grid(row=2, column=1, columnspan=1, padx=(460,0), pady=10, sticky=customtkinter.NE)
-        self.chatTag = customtkinter.CTkEntry(self.subscribeFrame, height=40, width=350, placeholder_text="Chat Tag")
-        self.chatTag.grid(row=3, column=1, columnspan=1, padx=(90,0), pady=(20, 0), sticky=customtkinter.SW)
-        self.userID = customtkinter.CTkEntry(self.subscribeFrame, height=40, width=350, placeholder_text="User ID")
-        self.userID.grid(row=3, column=1, columnspan=1, padx=(460,0), pady=(20, 0), sticky=customtkinter.SE)
+        self.walletEntry_s = customtkinter.CTkEntry(self.subscribeFrame, height=40, width=350, placeholder_text="Wallet Address")
+        self.walletEntry_s.grid(row=2, column=1, columnspan=1, padx=(90,0), pady=10, sticky=customtkinter.NW)
+        self.keyEntry_s = customtkinter.CTkEntry(self.subscribeFrame, height=40, width=350, placeholder_text="Wallet Key")
+        self.keyEntry_s.grid(row=2, column=1, columnspan=1, padx=(460,0), pady=10, sticky=customtkinter.NE)
+        self.chatTag_s = customtkinter.CTkEntry(self.subscribeFrame, height=40, width=350, placeholder_text="Chat Tag")
+        self.chatTag_s.grid(row=3, column=1, columnspan=1, padx=(90,0), pady=(20, 0), sticky=customtkinter.SW)
+        self.userID_s = customtkinter.CTkEntry(self.subscribeFrame, height=40, width=350, placeholder_text="User ID")
+        self.userID_s.grid(row=3, column=1, columnspan=1, padx=(460,0), pady=(20, 0), sticky=customtkinter.SE)
         self.subscribeButton = customtkinter.CTkButton(self.subscribeFrame, text="Subscribe", width=150, height=60,
             fg_color="transparent", border_width=2, text_color=("gray10", "#DCE4EE"), 
             font=customtkinter.CTkFont(size=18), command=self.callSubscribe)
         self.subscribeButton.grid(row=4, column=1, padx=(90, 20), pady=(55, 10), sticky=customtkinter.NW)
 
-        # frame for group setup tab
+        # frame for group setup/initialization tab
         self.setupFrame = customtkinter.CTkFrame(self, width=880, corner_radius=0)
 
         # group setup tab layout
@@ -78,41 +78,41 @@ class App(customtkinter.CTk):
                  "Price - Group entry price (BNB)", 
             justify=customtkinter.LEFT, font=customtkinter.CTkFont(size=18))
         self.setupInfo.grid(row=1, column=1, padx=(90,0), pady=(30, 30), sticky=customtkinter.SW)
-        self.walletEntry = customtkinter.CTkEntry(self.setupFrame, height=40, width=350, placeholder_text="Wallet Address")
-        self.walletEntry.grid(row=2, column=1, columnspan=1, padx=(90,0), pady=10, sticky=customtkinter.NW)
-        self.keyEntry = customtkinter.CTkEntry(self.setupFrame, height=40, width=350, placeholder_text="Wallet Key")
-        self.keyEntry.grid(row=2, column=1, columnspan=1, padx=(460,0), pady=10, sticky=customtkinter.NE)
-        self.chatTag = customtkinter.CTkEntry(self.setupFrame, height=40, width=350, placeholder_text="Chat Tag")
-        self.chatTag.grid(row=3, column=1, columnspan=1, padx=(90,0), pady=10, sticky=customtkinter.SW)
-        self.chatID = customtkinter.CTkEntry(self.setupFrame, height=40, width=350, placeholder_text="Chat ID")
-        self.chatID.grid(row=3, column=1, columnspan=1, padx=(460,0), pady=10, sticky=customtkinter.SE)
-        self.link = customtkinter.CTkEntry(self.setupFrame, height=40, width=350, placeholder_text="Link")
-        self.link.grid(row=4, column=1, columnspan=1, padx=(90,0), pady=10, sticky=customtkinter.SW)
-        self.price = customtkinter.CTkEntry(self.setupFrame, height=40, width=350, placeholder_text="Price")
-        self.price.grid(row=4, column=1, columnspan=1, padx=(460,0), pady=10, sticky=customtkinter.SE)
+        self.walletEntry_i = customtkinter.CTkEntry(self.setupFrame, height=40, width=350, placeholder_text="Wallet Address")
+        self.walletEntry_i.grid(row=2, column=1, columnspan=1, padx=(90,0), pady=10, sticky=customtkinter.NW)
+        self.keyEntry_i = customtkinter.CTkEntry(self.setupFrame, height=40, width=350, placeholder_text="Wallet Key")
+        self.keyEntry_i.grid(row=2, column=1, columnspan=1, padx=(460,0), pady=10, sticky=customtkinter.NE)
+        self.chatTag_i = customtkinter.CTkEntry(self.setupFrame, height=40, width=350, placeholder_text="Chat Tag")
+        self.chatTag_i.grid(row=3, column=1, columnspan=1, padx=(90,0), pady=10, sticky=customtkinter.SW)
+        self.chatID_i = customtkinter.CTkEntry(self.setupFrame, height=40, width=350, placeholder_text="Chat ID")
+        self.chatID_i.grid(row=3, column=1, columnspan=1, padx=(460,0), pady=10, sticky=customtkinter.SE)
+        self.link_i = customtkinter.CTkEntry(self.setupFrame, height=40, width=350, placeholder_text="Link")
+        self.link_i.grid(row=4, column=1, columnspan=1, padx=(90,0), pady=10, sticky=customtkinter.SW)
+        self.price_i = customtkinter.CTkEntry(self.setupFrame, height=40, width=350, placeholder_text="Price")
+        self.price_i.grid(row=4, column=1, columnspan=1, padx=(460,0), pady=10, sticky=customtkinter.SE)
         self.setupButton = customtkinter.CTkButton(self.setupFrame, text="Setup", width=150, height=60,
             fg_color="transparent", border_width=2, text_color=("gray10", "#DCE4EE"), 
             font=customtkinter.CTkFont(size=18), command=self.callInitialize)
         self.setupButton.grid(row=5, column=1, padx=(90, 20), pady=(25, 10), sticky=customtkinter.NW)
 
-        # frame for group settings tab
+        # frame for group settings/configurations tab
         self.settingsFrame = customtkinter.CTkFrame(self, width=880, corner_radius=0)
 
         # group settings tab layout
         self.settingsTitle = customtkinter.CTkLabel(self.settingsFrame, text="Manage your TeleGate group", 
             font=customtkinter.CTkFont(size=30))
         self.settingsTitle.grid(row=0, column=1, padx=(90,0), pady=40, sticky=customtkinter.NW)
-        self.walletEntry = customtkinter.CTkEntry(self.settingsFrame, height=40, width=350, placeholder_text="Wallet Address")
-        self.walletEntry.grid(row=1, column=1, columnspan=1, padx=(90,0), pady=(10, 25), sticky=customtkinter.NW)
-        self.keyEntry = customtkinter.CTkEntry(self.settingsFrame, height=40, width=350, placeholder_text="Wallet Key")
-        self.keyEntry.grid(row=1, column=1, columnspan=1, padx=(460,0), pady=(10, 25), sticky=customtkinter.NE)
-        self.chatTag = customtkinter.CTkEntry(self.settingsFrame, height=40, width=720, placeholder_text="Chat Tag")
-        self.chatTag.grid(row=1, column=1, columnspan=1, padx=(90,0), pady=(90, 10), sticky=customtkinter.SW)
+        self.walletEntry_c = customtkinter.CTkEntry(self.settingsFrame, height=40, width=350, placeholder_text="Wallet Address")
+        self.walletEntry_c.grid(row=1, column=1, columnspan=1, padx=(90,0), pady=(10, 25), sticky=customtkinter.NW)
+        self.keyEntry_c = customtkinter.CTkEntry(self.settingsFrame, height=40, width=350, placeholder_text="Wallet Key")
+        self.keyEntry_c.grid(row=1, column=1, columnspan=1, padx=(460,0), pady=(10, 25), sticky=customtkinter.NE)
+        self.chatTag_c = customtkinter.CTkEntry(self.settingsFrame, height=40, width=720, placeholder_text="Chat Tag")
+        self.chatTag_c.grid(row=1, column=1, columnspan=1, padx=(90,0), pady=(90, 10), sticky=customtkinter.SW)
         self.changeLink = customtkinter.CTkLabel(self.settingsFrame, text="Change group invite link", 
             font=customtkinter.CTkFont(size=26))
         self.changeLink.grid(row=2, column=1, padx=(90,0), pady=(40, 25), sticky=customtkinter.NW)
-        self.link = customtkinter.CTkEntry(self.settingsFrame, height=40, width=550, placeholder_text="Link")
-        self.link.grid(row=3, column=1, columnspan=1, padx=(90, 10), pady=10, sticky=customtkinter.NW)
+        self.link_c = customtkinter.CTkEntry(self.settingsFrame, height=40, width=550, placeholder_text="Link")
+        self.link_c.grid(row=3, column=1, columnspan=1, padx=(90, 10), pady=10, sticky=customtkinter.NW)
         self.changeLinkButton = customtkinter.CTkButton(self.settingsFrame, text="Change Link", width=150, height=40,
             fg_color="transparent", border_width=2, text_color=("gray10", "#DCE4EE"), 
             font=customtkinter.CTkFont(size=18), command=self.callChangeLink)
@@ -120,8 +120,8 @@ class App(customtkinter.CTk):
         self.changePrice = customtkinter.CTkLabel(self.settingsFrame, text="Change group entry price", 
             font=customtkinter.CTkFont(size=26))
         self.changePrice.grid(row=4, column=1, padx=(90,0), pady=25, sticky=customtkinter.NW)
-        self.price = customtkinter.CTkEntry(self.settingsFrame, height=40, width=550, placeholder_text="Price")
-        self.price.grid(row=5, column=1, columnspan=1, padx=(90, 10), pady=10, sticky=customtkinter.NW)
+        self.price_c = customtkinter.CTkEntry(self.settingsFrame, height=40, width=550, placeholder_text="Price")
+        self.price_c.grid(row=5, column=1, columnspan=1, padx=(90, 10), pady=10, sticky=customtkinter.NW)
         self.changePriceButton = customtkinter.CTkButton(self.settingsFrame, text="Change Price", width=150, height=40,
             fg_color="transparent", border_width=2, text_color=("gray10", "#DCE4EE"), 
             font=customtkinter.CTkFont(size=18), command=self.callChangePrice)
@@ -137,8 +137,8 @@ class App(customtkinter.CTk):
         self.getLink = customtkinter.CTkLabel(self.lookupFrame, text="Get group invite link", 
             font=customtkinter.CTkFont(size=22))
         self.getLink.grid(row=1, column=1, padx=(90,0), pady=20, sticky=customtkinter.NW)
-        self.chatTag = customtkinter.CTkEntry(self.lookupFrame, height=40, width=550, placeholder_text="Chat Tag")
-        self.chatTag.grid(row=1, column=1, columnspan=1, padx=(90, 10), pady=(70, 10), sticky=customtkinter.W)
+        self.chatTag_l = customtkinter.CTkEntry(self.lookupFrame, height=40, width=550, placeholder_text="Chat Tag")
+        self.chatTag_l.grid(row=1, column=1, columnspan=1, padx=(90, 10), pady=(70, 10), sticky=customtkinter.W)
         self.getLinkButton = customtkinter.CTkButton(self.lookupFrame, text="Get Link", width=150, height=40,
             fg_color="transparent", border_width=2, text_color=("gray10", "#DCE4EE"), 
             font=customtkinter.CTkFont(size=18), command=self.callGetLink)
@@ -146,8 +146,8 @@ class App(customtkinter.CTk):
         self.getPrice = customtkinter.CTkLabel(self.lookupFrame, text="Get group entry price", 
             font=customtkinter.CTkFont(size=22))
         self.getPrice.grid(row=2, column=1, padx=(90,0), pady=20, sticky=customtkinter.NW)
-        self.chatTag1 = customtkinter.CTkEntry(self.lookupFrame, height=40, width=550, placeholder_text="Chat Tag")
-        self.chatTag1.grid(row=2, column=1, columnspan=1, padx=(90, 10), pady=(70, 10), sticky=customtkinter.W)
+        self.chatTag_l1 = customtkinter.CTkEntry(self.lookupFrame, height=40, width=550, placeholder_text="Chat Tag")
+        self.chatTag_l1.grid(row=2, column=1, columnspan=1, padx=(90, 10), pady=(70, 10), sticky=customtkinter.W)
         self.getPriceButton = customtkinter.CTkButton(self.lookupFrame, text="Get Price", width=150, height=40,
             fg_color="transparent", border_width=2, text_color=("gray10", "#DCE4EE"), 
             font=customtkinter.CTkFont(size=18), command=self.callGetPrice)
@@ -155,8 +155,8 @@ class App(customtkinter.CTk):
         self.getTag = customtkinter.CTkLabel(self.lookupFrame, text="Get chat tag availability", 
             font=customtkinter.CTkFont(size=22))
         self.getTag.grid(row=3, column=1, padx=(90,0), pady=20, sticky=customtkinter.NW)
-        self.chatTag2 = customtkinter.CTkEntry(self.lookupFrame, height=40, width=550, placeholder_text="Chat Tag")
-        self.chatTag2.grid(row=3, column=1, columnspan=1, padx=(90, 10), pady=(70, 10), sticky=customtkinter.W)
+        self.chatTag_l2 = customtkinter.CTkEntry(self.lookupFrame, height=40, width=550, placeholder_text="Chat Tag")
+        self.chatTag_l2.grid(row=3, column=1, columnspan=1, padx=(90, 10), pady=(70, 10), sticky=customtkinter.W)
         self.getTagButton = customtkinter.CTkButton(self.lookupFrame, text="Check Tag", width=150, height=40,
             fg_color="transparent", border_width=2, text_color=("gray10", "#DCE4EE"), 
             font=customtkinter.CTkFont(size=18), command=self.callCheckChatTag)
@@ -164,10 +164,10 @@ class App(customtkinter.CTk):
         self.getSubStatus = customtkinter.CTkLabel(self.lookupFrame, text="Get user subscription status", 
             font=customtkinter.CTkFont(size=22))
         self.getSubStatus.grid(row=4, column=1, padx=(90,0), pady=20, sticky=customtkinter.NW)
-        self.chatTag3 = customtkinter.CTkEntry(self.lookupFrame, height=40, width=270, placeholder_text="Chat Tag")
-        self.chatTag3.grid(row=4, column=1, columnspan=1, padx=(90, 10), pady=(70, 10), sticky=customtkinter.W)
-        self.userID = customtkinter.CTkEntry(self.lookupFrame, height=40, width=270, placeholder_text="User ID")
-        self.userID.grid(row=4, column=1, columnspan=1, padx=(210, 10), pady=(70, 10))
+        self.chatID_l = customtkinter.CTkEntry(self.lookupFrame, height=40, width=270, placeholder_text="Chat ID")
+        self.chatID_l.grid(row=4, column=1, columnspan=1, padx=(90, 10), pady=(70, 10), sticky=customtkinter.W)
+        self.userID_l = customtkinter.CTkEntry(self.lookupFrame, height=40, width=270, placeholder_text="User ID")
+        self.userID_l.grid(row=4, column=1, columnspan=1, padx=(210, 10), pady=(70, 10))
         self.getStatusButton = customtkinter.CTkButton(self.lookupFrame, text="Check Status", width=150, height=40,
             fg_color="transparent", border_width=2, text_color=("gray10", "#DCE4EE"), 
             font=customtkinter.CTkFont(size=18), command=self.callSubStatus)
@@ -205,10 +205,10 @@ class App(customtkinter.CTk):
     
     # retrieve and use entry inputs to call subscribe() from smart contract wrapper
     def callSubscribe(self):
-        wallet = self.walletEntry.get() 
-        key = self.keyEntry.get()
-        chatTag = self.chatTag.get()
-        userID = self.userID.get()
+        wallet = self.walletEntry_s.get() 
+        key = self.keyEntry_s.get()
+        chatTag = self.chatTag_s.get()
+        userID = self.userID_s.get()
         # announce transaction status
         if(contract.subscribe(wallet, key, chatTag, userID) == 1):
             self.subscribeButton.configure(text="Failed", fg_color="red")
@@ -217,12 +217,12 @@ class App(customtkinter.CTk):
 
     # retrieve and use entry inputs to call initializeGroup() from smart contract wrapper
     def callInitialize(self):
-        wallet = self.walletEntry.get() 
-        key = self.keyEntry.get()
-        chatTag = self.chatTag.get()
-        chatID = self.chatID.get()
-        link = self.link.get()
-        price = self.price.get()
+        wallet = self.walletEntry_i.get() 
+        key = self.keyEntry_i.get()
+        chatTag = self.chatTag_i.get()
+        chatID = self.chatID_i.get()
+        link = self.link_i.get()
+        price = self.price_i.get()
         # announce transaction status
         if(contract.initializeGroup(wallet, key, chatTag, chatID, link, price) == 1):
             self.setupButton.configure(text="Failed", fg_color="red")
@@ -231,10 +231,10 @@ class App(customtkinter.CTk):
 
     # retrieve and use entry inputs to call changeLink() from smart contract wrapper
     def callChangeLink(self):
-        wallet = self.walletEntry.get() 
-        key = self.keyEntry.get()
-        chatTag = self.chatTag.get()
-        link = self.link.get()
+        wallet = self.walletEntry_c.get() 
+        key = self.keyEntry_c.get()
+        chatTag = self.chatTag_c.get()
+        link = self.link_c.get()
         # announce transaction status
         if(contract.changeLink(wallet, key, chatTag, link) == 1):
             self.changeLinkButton.configure(text="Failed", fg_color="red")
@@ -243,10 +243,10 @@ class App(customtkinter.CTk):
 
     # retrieve and use entry inputs to call changePrice() from smart contract wrapper
     def callChangePrice(self):
-        wallet = self.walletEntry.get() 
-        key = self.keyEntry.get()
-        chatTag = self.chatTag.get()
-        price = self.price.get()
+        wallet = self.walletEntry_c.get() 
+        key = self.keyEntry_c.get()
+        chatTag = self.chatTag_c.get()
+        price = self.price_c.get()
         # announce transaction status
         if(contract.changePrice(wallet, key, chatTag, price) == 1):
             self.changePriceButton.configure(text="Failed", fg_color="red")
@@ -255,19 +255,19 @@ class App(customtkinter.CTk):
 
     # retrieve and use entry inputs to call getLink() from smart contract wrapper
     def callGetLink(self):
-        chatTag = self.chatTag.get()
+        chatTag = self.chatTag_l.get()
         self.result.configure(text=contract.getLink(chatTag), fg_color="grey20")
         self.result.grid(row=5, column=1, sticky="nsew", padx=(90, 0), pady=(25, 0))
 
     # retrieve and use entry inputs to call getPrice() from smart contract wrapper
     def callGetPrice(self):
-        chatTag = self.chatTag1.get()
+        chatTag = self.chatTag_l1.get()
         self.result.configure(text=str(contract.getPrice(chatTag))+" BNB", fg_color="grey20")
         self.result.grid(row=5, column=1, sticky="nsew", padx=(90, 0), pady=(25, 0))
 
     # retrieve and use entry inputs to call isChatTagActive() from smart contract wrapper
     def callCheckChatTag(self):
-        chatTag = self.chatTag2.get()
+        chatTag = self.chatTag_l2.get()
         # announce tag availability
         if(contract.isChatTagActive(chatTag)):
             self.result.configure(text="Unavailable", fg_color="red")
@@ -278,10 +278,10 @@ class App(customtkinter.CTk):
 
     # retrieve and use entry inputs to call getSubStatus() from smart contract wrapper
     def callSubStatus(self):
-        chatTag = self.chatTag3.get()
-        userID = self.userID.get()
+        chatID = self.chatID_l.get()
+        userID = self.userID_l.get()
         # announce user subscription status
-        if(contract.getSubStatus(chatTag, userID)):
+        if(contract.getSubStatus(chatID, userID)):
             self.result.configure(text="Subscribed", fg_color="green")
         else:
             self.result.configure(text="Not Subscribed", fg_color="red")
